@@ -12,6 +12,8 @@ RUN sed -i '/deb http:\/\/deb.debian.org\/debian jessie-updates main/d' /etc/apt
 
 RUN apt-get -o Acquire::Check-Valid-Until=false update
 
+RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 8B48AD6246925553 7638D0442B90D010 CBF8D6FD518E17E1
+
 # Write RUN-statements here, that will install the required software within the Jenkins container
 # Install dotnet 5
 RUN apt-get install -y gpg
