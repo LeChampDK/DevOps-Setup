@@ -1,0 +1,25 @@
+version: "3.3"
+
+services:
+    jenkins:
+        build: .
+        container_name: jenkins
+        restart: always
+        ports:
+            - 4001:8080
+        volumes:
+            - jenkins-data:/var/jenkins_home
+            - /var/run/docker.sock:/var/run/docker.sock
+    portainer:
+        image: portainer/portainer-ce
+        container_name: portainer
+        ports:
+            - 4002:9000
+        volumes:
+            - /var/run/docker.sock:/var/run/docker.sock
+            - portainer-data:/data
+          
+
+volumes:
+    jenkins-data: {}
+    portainer-data: {}
